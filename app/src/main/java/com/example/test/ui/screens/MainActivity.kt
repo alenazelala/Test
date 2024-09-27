@@ -43,10 +43,8 @@ class MainActivity : AppCompatActivity() {
                 productAdapter.updateProducts(productList)
             }
         }
-        binding.search.setOnFocusChangeListener { _, hasFocus ->
-            if (hasFocus) {
-                productsViewModel.searchProducts(binding.search.text.toString())
-            }
+        binding.search.addTextChangedListener {
+            productsViewModel.searchProducts(binding.search.text.toString())
         }
         binding.imageView3.setOnClickListener {
             if (binding.search.visibility == View.VISIBLE) {
